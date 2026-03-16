@@ -1,0 +1,30 @@
+name: Daily Contest Bot
+
+on:
+  schedule:
+    # 19:50 UTC is exactly 01:20 AM IST
+    - cron: '50 19 * * *'
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run bot
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          CLIST_USERNAME: ${{ secrets.CLIST_USERNAME }}
+          CLIST_API_KEY: ${{ secrets.CLIST_API_KEY }}
+        run: python main.py

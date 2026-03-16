@@ -2,8 +2,8 @@ name: Daily Contest Bot
 
 on:
   schedule:
-    # 19:50 UTC is exactly 01:20 AM IST
-    - cron: '50 19 * * *'
+    # 12:30 UTC is 06:00 PM IST
+    - cron: '30 12 * * *'
   workflow_dispatch: 
 
 jobs:

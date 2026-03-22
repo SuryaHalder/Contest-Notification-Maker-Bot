@@ -19,7 +19,7 @@ def format_duration(seconds):
 
 def get_tomorrow_contests():
     """Fetches contests starting TOMORROW (IST) from CLIST."""
-    url = f"https://clist.by:443/api/v4/contest/?upcoming=true&resource_id__in=1,2,3&order_by=start&username={CLIST_USERNAME}&api_key={CLIST_API_KEY}"
+    url = f"https://clist.by:443/api/v4/contest/?upcoming=true&resource_id__in=1,2,93&order_by=start&username={CLIST_USERNAME}&api_key={CLIST_API_KEY}"
     
     try:
         response = requests.get(url, timeout=15)

@@ -2,6 +2,9 @@ import requests
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Setup
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
@@ -44,7 +47,16 @@ def get_tomorrow_contests():
         
         if dt_ist.date() == tomorrow:
             event_name = contest['event']
-            if contest['resource_id'] == 2 and not event_name.startswith("CodeChef"):
+            resource_id = contest['resource_id']
+            event_lower = event_name.lower();
+
+            # condition for codechef
+            if resource_id==2 and "starters" not in event_lower: continue
+            #same for atcoder
+            if resource_id==93 and "beginner contest" not in event_lower: continue
+
+
+            if resource_id == 2 and not event_name.startswith("CodeChef"):
                 event_name = f"CodeChef {event_name}"
             
             day_num = dt_ist.day

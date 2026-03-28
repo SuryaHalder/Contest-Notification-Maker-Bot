@@ -1,8 +1,0 @@
-.env
-
-# virtual env
-venv/
-env/
-
-# vs code
-.vscode/

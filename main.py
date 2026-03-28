@@ -2,9 +2,6 @@ import requests
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 # Setup
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
